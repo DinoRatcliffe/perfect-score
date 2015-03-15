@@ -3,6 +3,7 @@
 angular.module('perfectScoreApp', [
   'ngCookies',
   'ngResource',
+  'ngMaterial',
   'ngSanitize',
   'ui.router'
 ])

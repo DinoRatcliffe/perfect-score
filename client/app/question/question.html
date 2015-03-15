@@ -1,0 +1,17 @@
+<md-toolbar>
+</md-toolbar>
+<ps-tag-search on-new-questions="onNewQuestions"></ps-tag-search>
+<div ng-repeat="question in questions">
+    <h3>{{question.question}}</h3>
+    <ul>
+        <li ng-repeat="answer in question.answers">
+            {{answer.answer}} <span ng-if="answer.correct"> = </span>
+        </li>
+    </ul>
+    <div layout="row">
+        <div ng-repeat="tag in question.tags">
+            {{tag}}
+        </div>
+    </div>
+</div>
+

@@ -11,6 +11,14 @@ exports.index = function(req, res) {
   });
 };
 
+// Search list of questions
+exports.search = function(req, res) {
+  Question.find(req.body, function (err, questions) {
+    if(err) { return handleError(res, err); }
+    return res.json(200, questions);
+  });
+};
+
 // Get a single question
 exports.show = function(req, res) {
   Question.findById(req.params.id, function (err, question) {

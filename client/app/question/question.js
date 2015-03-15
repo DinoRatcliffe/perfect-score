@@ -3,10 +3,10 @@
 angular.module('perfectScoreApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('root.main', {
-        url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl',
+      .state('root.question', {
+        url: '/question',
+        templateUrl: 'app/question/question.html',
+        controller: 'QuestionCtrl',
         authenticate: true
       });
   });

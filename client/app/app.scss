@@ -3,6 +3,10 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 
 @import 'font-awesome/scss/font-awesome';
 
+[layout=row] {
+    flex-direction: row;
+}
+
 /**
  * App-wide Styles
  */
@@ -26,4 +30,8 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 @import 'account/login/login.scss';
 @import 'admin/admin.scss';
 @import 'main/main.scss';
+@import 'psMenu/psMenu.scss';
+@import 'psTagSearch/psTagSearch.scss';
+@import 'question/question.scss';
+@import 'root/root.scss';
 // endinjector
