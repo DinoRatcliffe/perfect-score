@@ -42,7 +42,9 @@ exports.update = function(req, res) {
   Question.findById(req.params.id, function (err, question) {
     if (err) { return handleError(res, err); }
     if(!question) { return res.send(404); }
+    question.tags = req.body.tags;
     var updated = _.merge(question, req.body);
+    updated.answers = req.body.answers;
     updated.save(function (err) {
       if (err) { return handleError(res, err); }
       return res.json(200, question);

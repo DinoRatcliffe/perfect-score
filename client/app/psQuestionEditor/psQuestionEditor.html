@@ -9,7 +9,7 @@
                 <label>Answer</label>
                 <input ng-model="answer.answer" ng-disabled="!editing">
             </md-input-container>
-            <md-checkbox ng-model="answer.correct" ng-disabled="!editing"></md-checkbox>
+            <md-checkbox ng-model="answer.correct" ng-disabled="!editing" aria-label="Is Correct?"></md-checkbox>
             <md-button ng-click="removeAnswer($index)" ng-if="editing">
                 x
             </md-button>
@@ -19,7 +19,7 @@
                 <label>Answer</label>
                 <input ng-model="currentanswer.answer">
             </md-input-container>
-            <md-checkbox ng-model="currentanswer.correct">
+            <md-checkbox ng-model="currentanswer.correct" aria-label="Is Correct?">
                 <md-tooltip>
                     Is Correct?
                 </md-tooltip>
@@ -28,6 +28,12 @@
                 Add
             </md-button>
         </div>
+        <div layout="row">
+            <div ng-class="tag" ng-repeat="tag in question.tags" class="tag" ng-if="!editing">
+                {{tag}} 
+            </div>
+        </div>
+        <ps-tag-search on-change="tagsChanged" ps-tags="question.tags" ng-if="editing"></ps-tag-search>
     </md-content>
     <div layout="column" ng-switch="editing">
         <div ng-switch-when="false" flex layout="column">

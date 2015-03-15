@@ -2,21 +2,29 @@
 
 angular.module('perfectScoreApp')
   .controller('QuestionCtrl', function ($scope, $mdDialog, Question) {
+
+      $scope.onNewQuestions = function(questions) {
+          $scope.questions = questions;
+      };
+
       $scope.createQuestion = function() {
           $mdDialog.show({
               controller: CreateQuestionDialog,
               templateUrl: 'app/question/question.create.dialog.html',
           }).then(function(question) {
-              console.log(question);
+              Question.save(question);
           });
       };
-      $scope.onNewQuestions = function(questions) {
-          $scope.questions = questions;
+
+      $scope.onTagChange = function(tags) {
+         Question.search({tags: {$in: tags}}, function(questions) {
+             $scope.questions = questions;
+         });
       };
   });
 
   function CreateQuestionDialog($scope, $mdDialog) {
-      $scope.question = {answers: []};
+      $scope.question = {answers: [], tags: []};
       $scope.currentAnswer = {};
 
       $scope.hide = function() {

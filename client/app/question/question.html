@@ -2,17 +2,14 @@
 <md-button ng-click="createQuestion()"> 
     Create Question
 </md-button>
-<div ng-repeat="question in questions">
-    <h3>{{question.question}}</h3>
-    <ul>
-        <li ng-repeat="answer in question.answers">
-            {{answer.answer}} <span ng-if="answer.correct"> = </span>
-        </li>
-    </ul>
-    <div layout="row">
-        <div ng-repeat="tag in question.tags">
-            {{tag}}
-        </div>
-    </div>
-</div>
-
+<ps-tag-search on-change="onTagChange" ps-tags="[]"></ps-tag-search>
+<md-grid-list
+    md-cols-sm="1" md-cols-md="2" md-cols-gt-md="4"
+    md-row-height-gt-md="1:1" md-row-height="2:2"
+    md-gutter="12px" md-gutter-gt-sm="8px">
+    <md-grid-tile ng-repeat="question in questions">
+        <md-card>
+        <ps-question-editor question="question"></ps-question-editor>
+    </md-card>
+    </md-grid-tile>
+</md-grid-list>

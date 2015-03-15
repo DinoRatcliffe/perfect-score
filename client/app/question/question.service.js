@@ -13,6 +13,12 @@ angular.module('perfectScoreApp')
                 'Content-Type': 'application/json'
             },
             isArray: true
+        },
+        update: {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            }
         }});
   })
   .factory('QuestionQueryTags', function(Question, $q) {
@@ -20,6 +26,7 @@ angular.module('perfectScoreApp')
           var delay = $q.defer();
           query = {tags: {$in: tags}};
           Question.search(tags, function(questions) {
+              delay.resolve(questions);
           }, function() {
               delay.reject();
           });

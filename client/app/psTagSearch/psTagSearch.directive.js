@@ -6,36 +6,29 @@ angular.module('perfectScoreApp')
       templateUrl: 'app/psTagSearch/psTagSearch.html',
       restrict: 'EA',
       scope: {
-          onNewQuestions: '=onNewQuestions'
+          onChange: '=onChange',
+          tags: '=psTags'
       },
       link: function (scope, element, attrs) {
       },
-      controller: function($scope, Question) {
-          var tags = [];
-
+      controller: function($scope) {
           function addTag(tag) {
-              tags.push(tag.valueOf().toLowerCase().trim());
+              $scope.tags.push(tag.valueOf().toLowerCase().trim());
               $scope.tagInput = "";
-              loadQuestions(tags);
+              onChange($scope.tags);
           }
 
           function removeTag(index) {
-              tags.splice(index, 1);
-              loadQuestions(tags);
+              $scope.tags.splice(index, 1);
+              onChange($scope.tags);
           };
 
-          function loadQuestions(searchTags) {
-              Question.search({tags: {$in: searchTags}}, 
-                              function(questions) {
-                                  if (searchTags == tags) {
-                                      $scope.onNewQuestions(questions);
-                                  }
-                              });
+          function onChange(tags) {
+              $scope.onChange(tags);
           }
 
           $scope.removeTag = removeTag;
           $scope.addTag = addTag;
-          $scope.tags = tags;
       }
     };
   });
