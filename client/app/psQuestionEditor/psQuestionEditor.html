@@ -1,0 +1,44 @@
+<div>
+    <md-content class="md-padding">
+        <md-input-container>
+            <label>Question</label>
+            <input ng-model="question.question" ng-disabled="!editing">
+        </md-input-container>
+        <div ng-repeat="answer in question.answers" layout="row">
+            <md-input-container flex>
+                <label>Answer</label>
+                <input ng-model="answer.answer" ng-disabled="!editing">
+            </md-input-container>
+            <md-checkbox ng-model="answer.correct" ng-disabled="!editing"></md-checkbox>
+            <md-button ng-click="removeAnswer($index)" ng-if="editing">
+                x
+            </md-button>
+        </div>
+        <div ng-if="editing" layout="row">
+            <md-input-container flex>
+                <label>Answer</label>
+                <input ng-model="currentanswer.answer">
+            </md-input-container>
+            <md-checkbox ng-model="currentanswer.correct">
+                <md-tooltip>
+                    Is Correct?
+                </md-tooltip>
+            </md-checkbox>
+            <md-button ng-click="addQuestion()">
+                Add
+            </md-button>
+        </div>
+    </md-content>
+    <div layout="column" ng-switch="editing">
+        <div ng-switch-when="false" flex layout="column">
+            <md-button flex ng-if="!editing" ng-click="toggleEditing()">
+                Edit
+            </md-button>
+        </div>
+        <div ng-switch-when="true" flex layout="column">
+            <md-button flex ng-if="editing" ng-click="toggleEditing()">
+                Save
+            </md-button>
+        </div>
+    </div>
+</div>

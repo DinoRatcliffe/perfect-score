@@ -1,6 +1,7 @@
-<md-toolbar>
-</md-toolbar>
-<ps-tag-search on-new-questions="onNewQuestions"></ps-tag-search>
+<md-toolbar></md-toolbar>
+<md-button ng-click="createQuestion()"> 
+    Create Question
+</md-button>
 <div ng-repeat="question in questions">
     <h3>{{question.question}}</h3>
     <ul>
