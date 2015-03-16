@@ -9,6 +9,28 @@ angular.module('perfectScoreApp')
           questions: "=psQuestions",
           questionSelected: "=psQuestionSelected"
       },
+      controller: function($scope, $mdDialog) {
+          $scope.displayScore = function() {
+              var score = 0;
+              $scope.questions.forEach(function(question) {
+                  if (question.isCorrect === "true") {
+                      score++;
+                  }
+                  question.showAnswer = true;
+              });
+
+              $mdDialog.show(
+                  $mdDialog.alert()
+                  .title("Results")
+                  .content('You got ' + (score / $scope.questions.length * 100) + "% correct")
+                  .ariaLabel('Test Result')
+                  .ok("ok")
+              );
+          };
+
+          $scope.editing = false;
+          $scope.toggleEditing = function () {$scope.editing = !$scope.editing;};
+      },
       link: function (scope, element, attrs) {
       }
     };

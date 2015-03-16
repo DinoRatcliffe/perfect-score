@@ -1,0 +1,12 @@
+<div>
+    <md-content class="md-padding">
+        <div ng-if="question.showAnswer">
+            <h3 class="correct" ng-if="question.isCorrect">Correct Answer</h3>
+            <h3 class="incorrect" ng-if="!question.isCorrect">Incorrect Answer</h3>
+        </div>
+        <h2>{{question.question}}</h2>
+        <md-radio-group ng-model="question.isCorrect">
+            <md-radio-button ng-repeat="answer in question.answers" value="{{answer.correct}}">{{answer.answer}}</md-radio-button>
+        </md-radio-group>
+    </md-content>
+</div>
