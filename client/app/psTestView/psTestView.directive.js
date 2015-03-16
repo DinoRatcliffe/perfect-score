@@ -7,6 +7,7 @@ angular.module('perfectScoreApp')
       restrict: 'EA',
       scope: {
           questions: "=psQuestions",
+          questionSelected: "=psQuestionSelected"
       },
       link: function (scope, element, attrs) {
       }

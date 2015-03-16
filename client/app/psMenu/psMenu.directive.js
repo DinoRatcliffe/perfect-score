@@ -7,7 +7,7 @@ angular.module('perfectScoreApp')
       restrict: 'EA',
       link: function (scope, element, attrs) {
       },
-      controller: function($scope, $mdSidenav, $mdMedia, Test, $mdDialog, $mdToast) {
+      controller: function($scope, $state, $mdSidenav, $mdMedia, Test, $mdDialog, $mdToast) {
 
           function toggleMenu() {
               $mdSidenav('psMenu').toggle();
@@ -31,12 +31,17 @@ angular.module('perfectScoreApp')
               });
           }
 
+          function openTest(test) {
+              $state.go('root.test', test);
+          }
+
           function loadTests() {
               $scope.tests = Test.get();
           }
           loadTests();
 
           $scope.showCreateTestDialog = showCreateTestDialog;
+          $scope.openTest = openTest;
           $scope.toggleMenu = toggleMenu;
           $scope.media = $mdMedia;
       }

@@ -7,7 +7,7 @@
         <md-tooltip>Create Test</md-tooltip>
     </md-button>
     <md-content layout="column">
-        <md-button ng-repeat="test in tests" aria-label="Some Test">
+        <md-button ng-repeat="test in tests" ng-click="openTest(test)" aria-label="Some Test">
             {{test._id}}
         </md-button>
     </md-content>

@@ -9,6 +9,7 @@ var client = new Client();
 client.registerMethod('getTests', apiURL + '/', 'GET');
 client.registerMethod('putTest', apiURL + '/${id}', 'PUT');
 client.registerMethod('putQuestion', apiURL + '/${id}/question/${questionId}', 'PUT');
+client.registerMethod('removeQuestion', apiURL + '/${id}/question/${questionId}', 'DELETE');
 client.registerMethod('getQuestions', apiURL + '/${id}/questions', 'GET');
 
 exports.index = function(req, res) {
@@ -21,6 +22,12 @@ exports.create = function(req, res) {
     client.methods.putTest({path: {"id" : req.params.id}}, function(data, response) {
         return res.json(response.statusCode, data);
     }); 
+};
+
+exports.removeQuestion = function(req, res) {
+    client.methods.removeQuestion({path: {"id": req.params.id, "questionId": req.params.questionId}}, function(data, response) {
+        return res.json(response.statusCode, data);
+    });
 };
 
 exports.addQuestion = function(req, res) {
