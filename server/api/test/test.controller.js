@@ -20,6 +20,9 @@ exports.index = function(req, res) {
 
 exports.create = function(req, res) {
     client.methods.putTest({path: {"id" : req.params.id}}, function(data, response) {
+        if (!/^[0-9a-fA-f]{5}-\d{4}-\d{2}-\d{2}$/.test(req.params.id)) {
+            return res.send(400)
+        }
         return res.json(response.statusCode, data);
     }); 
 };
