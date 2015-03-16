@@ -2,11 +2,14 @@
     <md-toolbar>
         <h1 class="md-toolbar-tools">Perfect Score</h1>
     </md-toolbar>
-    <md-button ng-click="showCreateTestDialog()" class="md-fab md-fab-top-right" aria-label="Create Test">
+    <md-button ng-if="loggedIn" ng-click="showCreateTestDialog()" class="md-fab md-fab-top-right" aria-label="Create Test">
         <md-icon md-svg-src="assets/svg/add.svg"></md-icon>
         <md-tooltip>Create Test</md-tooltip>
     </md-button>
     <md-content layout="column">
+        <md-button ng-click="login()" class="md-primary" ng-if="!loggedIn">
+            Login to Edit
+        </md-button>
         <md-button ng-repeat="test in tests" ng-click="openTest(test)" aria-label="Some Test">
             {{test._id}}
         </md-button>

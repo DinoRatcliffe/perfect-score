@@ -1,17 +1,17 @@
-<div>
-    <div layout="column" ng-switch="editing">
-        <div ng-switch-when="true" layout="column">
+<div layout="column" class="ps-quetion-view" flex>
+    <div layout="column" ng-switch="editing" ng-if="editable" class="ps-button">
+        <div ng-switch-when="true" layout="column" flex>
             <md-button flex ng-click="toggleEditing()">
                 Test View
             </md-button>
         </div>
-        <div ng-switch-when="false" layout="column">
+        <div ng-switch-when="false" layout="column" flex>
             <md-button flex ng-click="toggleEditing()">
                 Edit View
             </md-button>
         </div>
     </div>
-    <div ng-switch="editing">
+    <div ng-switch="editing" class="ps-question-container" flex>
         <md-card ng-repeat="question in questions" ng-switch-when="true">
             <ps-question-editor question="question"></ps-question-editor>
             <md-button ng-click="questionSelected.callback(question)">
@@ -22,7 +22,7 @@
             <md-card ng-repeat="question in questions">
                 <ps-question-answer question="question" show-answer="showAnswer"></ps-question-answer>
             </md-card>
-            <div layout="column" ng-switch="marked" ng-if="questions.length > 0">
+            <div layout="column" ng-switch="marked" ng-if="questions.length > 0" class="ps-button">
                     <div ng-switch-when="true" layout="column">
                         <md-button class="md-primary md-raised" flex ng-click="resetMarked()">
                             Reset

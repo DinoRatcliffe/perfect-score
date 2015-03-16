@@ -5,3 +5,16 @@
 .incorrect {
     color: #f00;
 }
+
+.ps-question-container {
+    overflow-y: scroll;
+    height: 0px;
+}
+
+.ps-question-view md-button {
+    height: 2em;
+}
+
+div.ng-scope.ps-button {
+    height: 2em;
+}

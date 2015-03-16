@@ -7,6 +7,7 @@ angular.module('perfectScoreApp')
       restrict: 'EA',
       scope: {
           questions: "=psQuestions",
+          editable: "=",
           questionSelected: "=psQuestionSelected"
       },
       controller: function($scope, $mdDialog) {

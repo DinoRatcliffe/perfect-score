@@ -7,7 +7,11 @@ angular.module('perfectScoreApp')
       restrict: 'EA',
       link: function (scope, element, attrs) {
       },
-      controller: function($scope, $state, $mdSidenav, $mdMedia, Test, $mdDialog, $mdToast) {
+      controller: function($scope, Auth, $state, $mdSidenav, $mdMedia, Test, $mdDialog, $mdToast) {
+
+          Auth.isLoggedInAsync(function(loggedIn) {
+              $scope.loggedIn = loggedIn;
+          });
 
           function toggleMenu() {
               $mdSidenav('psMenu').toggle();
@@ -32,7 +36,11 @@ angular.module('perfectScoreApp')
           }
 
           function openTest(test) {
-              $state.go('root.test', test);
+              if($scope.loggedIn) {
+                  $state.go('root.test', test);
+              } else {
+                  $state.go('root.taketest', test);
+              }
           }
 
           function loadTests() {
@@ -40,6 +48,7 @@ angular.module('perfectScoreApp')
           }
           loadTests();
 
+          $scope.login = function() { $state.go('login'); };
           $scope.showCreateTestDialog = showCreateTestDialog;
           $scope.openTest = openTest;
           $scope.toggleMenu = toggleMenu;

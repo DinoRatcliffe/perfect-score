@@ -6,7 +6,6 @@ angular.module('perfectScoreApp')
       .state('root.main', {
         url: '/',
         templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl',
-        authenticate: true
+        controller: 'MainCtrl'
       });
   });

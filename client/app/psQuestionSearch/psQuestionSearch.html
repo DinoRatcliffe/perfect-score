@@ -1,11 +1,11 @@
-<div layout="column">
+<div layout="column" flex>
     <div>
         <md-button ng-click="createQuestion()" class="md-primary md-raised">
             New Question
         </md-button>
         <ps-tag-search on-change="onTagChange" ps-tags="[]"></ps-tag-search>
     </div>
-    <div>
+    <div class="ps-card-container" flex>
         <md-card ng-repeat="question in questions">
             <ps-question-editor question="question"></ps-question-editor>
             <md-button ng-click="questionSelection.callback(question)">

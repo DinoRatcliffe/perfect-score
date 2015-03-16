@@ -1,9 +1,9 @@
 <md-toolbar></md-toolbar>
 <div layout="row" class="test-builder" flex>
-    <div flex>
-        <ps-test-view ps-questions="questions" ps-question-selected="removeQuestion"></ps-test-view>
+    <div layout="column" flex>
+        <ps-test-view ps-questions="questions" ps-question-selected="removeQuestion" editable="true" layout="column" flex></ps-test-view>
     </div>
-    <div class="question-search">
-        <ps-question-search ps-question-selected="questionSelected"></ps-question-search>
+    <div class="question-search" layout="column">
+            <ps-question-search ps-question-selected="questionSelected" layout="column" flex></ps-question-search>
     </div>
 </div>
