@@ -7,13 +7,54 @@ angular.module('perfectScoreApp')
       restrict: 'EA',
       link: function (scope, element, attrs) {
       },
-      controller: function($scope, $mdSidenav, $mdMedia) {
+      controller: function($scope, $mdSidenav, $mdMedia, Test, $mdDialog, $mdToast) {
+
           function toggleMenu() {
               $mdSidenav('psMenu').toggle();
           }
 
+          function showCreateTestDialog(ev) {
+              $mdDialog.show({
+                  controller: DialogController,
+                  templateUrl: 'app/psMenu/createTest.dialog.html',
+                  targetEvent: ev,
+              }).then(function(test) {
+                  Test.create(test, function(){
+                      $mdToast.show(
+                          $mdToast.simple()
+                          .content("Created Test - " + test._id)
+                          .position("bottom right")
+                          .hideDelay(3000)
+                      );
+                      $scope.tests.push(test);
+                  });
+              });
+          }
+
+          function loadTests() {
+              $scope.tests = Test.get();
+          }
+          loadTests();
+
+          $scope.showCreateTestDialog = showCreateTestDialog;
           $scope.toggleMenu = toggleMenu;
           $scope.media = $mdMedia;
       }
     };
   });
+
+  function DialogController($scope, $mdDialog, $rootScope) {
+      $scope.test = {};
+
+      $scope.hide = function() {
+          $mdDialog.hide();
+      }
+
+      $scope.cancel = function() {
+          $mdDialog.cancel();
+      };
+
+      $scope.createTest = function() {
+          $mdDialog.hide($scope.test);
+      };
+  }

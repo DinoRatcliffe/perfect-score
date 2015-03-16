@@ -1,5 +1,5 @@
 <div>
-    <md-content layout="row" layout-sm="column">
+    <div layout="row" layout-sm="column">
         <md-input-container class="md-padding" flex>
             <label>Tag</label>
             <input ng-model="tagInput">
@@ -7,13 +7,13 @@
         <md-button ng-click="addTag(tagInput)">
             Add
         </md-button>
-    </md-content>
-    <md-content class="md-padding" layout="row">
+    </div>
+    <div class="md-padding" layout="row">
         <div class="tag" ng-repeat="tag in tags">
             {{tag}} 
             <md-button ng-click="removeTag($index)">
                 x
             </md-button>
         </div>
-    </md-content>
+    </div>
 </div>

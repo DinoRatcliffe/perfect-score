@@ -34,17 +34,17 @@
             </div>
         </div>
         <ps-tag-search on-change="tagsChanged" ps-tags="question.tags" ng-if="editing"></ps-tag-search>
+        <div layout="column" ng-switch="editing">
+            <div ng-switch-when="false" flex layout="column">
+                <md-button flex ng-if="!editing" ng-click="toggleEditing()">
+                    Edit
+                </md-button>
+            </div>
+            <div ng-switch-when="true" flex layout="column">
+                <md-button flex ng-if="editing" ng-click="toggleEditing()">
+                    Save
+                </md-button>
+            </div>
+        </div>
     </md-content>
-    <div layout="column" ng-switch="editing">
-        <div ng-switch-when="false" flex layout="column">
-            <md-button flex ng-if="!editing" ng-click="toggleEditing()">
-                Edit
-            </md-button>
-        </div>
-        <div ng-switch-when="true" flex layout="column">
-            <md-button flex ng-if="editing" ng-click="toggleEditing()">
-                Save
-            </md-button>
-        </div>
-    </div>
 </div>

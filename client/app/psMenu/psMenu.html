@@ -1,12 +1,14 @@
-<div layout="column">
-    <md-sidenav flex class="md-sidenav-left md-whiteframe-z2" md-component-id="psMenu" md-is-locked-open="$mdMedia('gt-lg')">
-        <md-toolbar>
-            <h1 class="md-toolbar-tools">Perfect Score</h1>
-        </md-toolbar>
-        <md-content layout="column">
-            <md-button ng-click="fakeTest()" aria-label="Some Test">
-                FakeTest
-            </md-button>
-        </md-content>
-    </md-sidenav>
-</div>
+<md-sidenav flex class="md-sidenav-left md-whiteframe-z2" md-component-id="psMenu" md-is-locked-open="$mdMedia('gt-lg')">
+    <md-toolbar>
+        <h1 class="md-toolbar-tools">Perfect Score</h1>
+    </md-toolbar>
+    <md-button ng-click="showCreateTestDialog()" class="md-fab md-fab-top-right" aria-label="Create Test">
+        <md-icon md-svg-src="assets/svg/add.svg"></md-icon>
+        <md-tooltip>Create Test</md-tooltip>
+    </md-button>
+    <md-content layout="column">
+        <md-button ng-repeat="test in tests" aria-label="Some Test">
+            {{test._id}}
+        </md-button>
+    </md-content>
+</md-sidenav>
