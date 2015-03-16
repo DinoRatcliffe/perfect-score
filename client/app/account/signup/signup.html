@@ -1,6 +1,11 @@
+
+<div layout=row">
+    <div flex></div>
+    <div layout="column">
+        <div flex></div>
 <form class="form" name="form" ng-submit="register(form)" novalidate>
 
-    <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
+    <md-input-container class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
         'has-error': form.name.$invalid && submitted }">
         <label>Name</label>
 
@@ -9,9 +14,9 @@
         <p class="help-block" ng-show="form.name.$error.required && submitted">
             A name is required
         </p>
-    </div>
+    </md-input-container>
 
-    <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
+    <md-input-container class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
         'has-error': form.email.$invalid && submitted }">
         <label>Email</label>
 
@@ -27,9 +32,9 @@
         <p class="help-block" ng-show="form.email.$error.mongoose">
             {{ errors.email }}
         </p>
-    </div>
+    </md-input-container>
 
-    <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
+    <md-input-container class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
         'has-error': form.password.$invalid && submitted }">
         <label>Password</label>
 
@@ -44,15 +49,19 @@
         <p class="help-block" ng-show="form.password.$error.mongoose">
             {{ errors.password }}
         </p>
-    </div>
+    </md-input-container>
 
     <div>
-        <button class="btn btn-inverse btn-lg btn-login" type="submit">
+        <md-button class="btn btn-inverse btn-lg btn-login" type="submit">
             Sign up
-        </button>
+        </md-button>
         <a class="btn btn-default btn-lg btn-register" href="/login">
             Login
         </a>
     </div>
 
 </form>
+        <div flex></div>
+    </div>
+    <div flex></div>
+</div>
