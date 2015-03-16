@@ -1,8 +1,15 @@
 <div>
-    <div layout="row">
-        <md-button flex ng-click="toggleEditing()">
-            Take Test
-        </md-button>
+    <div layout="column" ng-switch="editing">
+        <div ng-switch-when="true" layout="column">
+            <md-button flex ng-click="toggleEditing()">
+                Test View
+            </md-button>
+        </div>
+        <div ng-switch-when="false" layout="column">
+            <md-button flex ng-click="toggleEditing()">
+                Edit View
+            </md-button>
+        </div>
     </div>
     <div ng-switch="editing">
         <md-card ng-repeat="question in questions" ng-switch-when="true">
@@ -15,11 +22,18 @@
             <md-card ng-repeat="question in questions">
                 <ps-question-answer question="question" show-answer="showAnswer"></ps-question-answer>
             </md-card>
-            <div layout="row">
-            <md-button class="md-primary md-raised" flex ng-click="displayScore()">
-                Mark
-            </md-button>
-        </div>
+            <div layout="column" ng-switch="marked" ng-if="questions.length > 0">
+                    <div ng-switch-when="true" layout="column">
+                        <md-button class="md-primary md-raised" flex ng-click="resetMarked()">
+                            Reset
+                        </md-button>
+                    </div>
+                    <div ng-switch-when="false" layout="column">
+                        <md-button class="md-primary md-raised" flex ng-click="displayScore()">
+                            Mark
+                        </md-button>
+                    </div>
+                </div>
         </div>
     </div>
 </div>

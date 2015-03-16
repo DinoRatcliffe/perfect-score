@@ -8,6 +8,11 @@ angular.module('perfectScoreApp')
       scope: {
           question: "=",
       },
+      controller: function($scope) {
+          $scope.answerSelected = function(answer) {
+              $scope.question.isCorrect = answer.correct === true ? true : false;
+          };
+      },
       link: function (scope, element, attrs) {
       }
     };

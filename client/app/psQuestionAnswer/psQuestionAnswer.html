@@ -5,8 +5,10 @@
             <h3 class="incorrect" ng-if="!question.isCorrect">Incorrect Answer</h3>
         </div>
         <h2>{{question.question}}</h2>
-        <md-radio-group ng-model="question.isCorrect">
-            <md-radio-button ng-repeat="answer in question.answers" value="{{answer.correct}}">{{answer.answer}}</md-radio-button>
+        <md-radio-group>
+            <md-radio-button ng-repeat="answer in question.answers" value="{{answer.answer}}" ng-click="answerSelected(answer)">
+                {{answer.answer}}
+            </md-radio-button>
         </md-radio-group>
     </md-content>
 </div>

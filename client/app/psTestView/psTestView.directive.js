@@ -13,11 +13,13 @@ angular.module('perfectScoreApp')
           $scope.displayScore = function() {
               var score = 0;
               $scope.questions.forEach(function(question) {
-                  if (question.isCorrect === "true") {
+                  if (question.isCorrect === true) {
                       score++;
                   }
                   question.showAnswer = true;
               });
+
+              $scope.marked = true;
 
               $mdDialog.show(
                   $mdDialog.alert()
@@ -28,6 +30,13 @@ angular.module('perfectScoreApp')
               );
           };
 
+          $scope.marked = false;
+          $scope.resetMarked = function() {
+              $scope.marked = false;
+              $scope.questions.forEach(function(question) {
+                  question.showAnswer = false;
+              });
+          };
           $scope.editing = false;
           $scope.toggleEditing = function () {$scope.editing = !$scope.editing;};
       },

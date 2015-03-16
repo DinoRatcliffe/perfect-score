@@ -11,7 +11,7 @@ angular.module('perfectScoreApp')
             isArray: true
        },
        create: {
-           url: '/api/tests/:id',
+           url: '/api/tests/:_id',
            method: 'PUT',
        },
        questions: {
